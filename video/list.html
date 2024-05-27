@@ -5,37 +5,39 @@
     <title>Title</title>
 </head>
 <body>
-
-
+<link rel="stylesheet" href="/styles/culturemedia.css" type="text/css">
 <h1>Videos</h1>
 
 <table id="videos_table">
     <thead>
-    <td>Cod.</td>
+    <td>Code</td>
+    <td>Title</td>
+    <td>Description</td>
+    <td>Duration</td>
     </thead>
-
 </table>
 
-
+<div class="back-button">
 <a href="../index.html">
     Inicio
 </a>
+</div>
 </body>
 </html>
-
 
 
 <script>
 
     find_all_videos();
-    function find_all_videos(){
+
+    function find_all_videos() {
         console.log("Listing all videos:");
 
         var xhttp = new XMLHttpRequest();
 
         xhttp.open('GET', 'http://localhost:8080/videos', true);
 
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
 
             if (xhttp.readyState === XMLHttpRequest.DONE) {
                 var status = xhttp.status;
@@ -54,8 +56,8 @@
         var tableBody = document.getElementById(table);
 
         var child = tableBody.childElementCount;
-        for ( let row = 1; row < child; row++ ) {
-            tableBody.deleteRow(child-row);
+        for (let row = 1; row < child; row++) {
+            tableBody.deleteRow(child - row);
         }
 
         // Populate table
