@@ -5,42 +5,52 @@
     <title>Title</title>
 </head>
 <body>
+<link rel="stylesheet" type="text/css" href="/styles/culturemedia.css">
+
+<div class="input-container">
+
+    <h2>Adicionar Video</h2>
+
+    <form>
+        <label for="code">Code:</label><br>
+        <input type="text" id="code" name="code" value=""><br>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value=""><br>
+        <label for="description">Description</label><br>
+        <input type="text" id="description" name="description" value=""><br>
+        <label for="duration">Duration</label><br>
+        <input type="number" id="duration" name="duration" value="">
+        <br><br>
+        <input type="button" value="Guardar" class="btn btn-primary" onclick="add();">
+    </form>
 
 
-
-<h2>Adicionar nota</h2>
-
-<form >
-    <label for="code">Code:</label><br>
-    <input type="text" id="code" name="code" value=""><br>
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title" value=""><br><br>
-
-    <input type="button" value="Guardar" class="btn btn-primary" onclick="add();">
-</form>
-
-
-
-<a href="../index.html" class="link-secondary">Volver al inicio</a>
-
+    <div class="back-button" id="btn-home">
+        <a href="../index.html" class="link-secondary">Volver al inicio</a>
+    </div>
+</div>
 </body>
 </html>
 
 
 <script>
-    function add(){
+    function add() {
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.open( "POST", "http://localhost:8080/videos", true );
+        xmlhttp.open("POST", "http://localhost:8080/videos", true);
 
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         var code = document.getElementById("code");
         var title = document.getElementById("title");
+        var description = document.getElementById("description")
+        var duration = document.getElementById("duration")
 
         var newVideo = {
             "code": code.value,
-            "title": title.value
+            "title": title.value,
+            "description": description.value,
+            "duration": duration.value
         }
 
         console.log("Adding video:" + JSON.stringify(newVideo));
